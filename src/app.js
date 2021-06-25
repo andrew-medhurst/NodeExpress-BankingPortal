@@ -11,10 +11,10 @@ app.use(express.static(path.join(dirPath, '/public')));
 app.use(express.urlencoded({ extended: true }));
 
 const accountData = fs.readFileSync(
-  path.join(dirPath, '/json/accounts.json'), {encoding: 'UTF8'});
+  path.join(dirPath, '/json/accounts.json'), {encoding: 'utf8'});
 const accounts = JSON.parse(accountData);
 
-const userData = fs.readFileSync(path.join(dirPath, '/json/users.json'), { encoding: 'UTF8'});
+const userData = fs.readFileSync(path.join(dirPath, '/json/users.json'), { encoding: 'utf8'});
 const users = JSON.parse(userData);
 
 app.get('/', (req, res) => {
@@ -59,7 +59,7 @@ app.post('/transfer', (req, res) => {
   
   const accountsJSON = JSON.stringify(accounts);
   fs.writeFileSync(path.join(dirPath, '/json/accounts.json'), 
-    accountsJSON, { encoding: 'UTF8' });
+    accountsJSON, 'utf8');
 
   res.render('transfer', { message: 'Transfer Completed' });
 });
@@ -75,7 +75,7 @@ app.post('/payment', (req, res) => {
 
   const accountsJSON = JSON.stringify(accounts);
   fs.writeFileSync(path.join(dirPath, '/json/accounts.json'), 
-    accountsJSON, { encoding: 'UTF8' });
+    accountsJSON, 'utf8');
   
     res.render('payment', { 
     message: 'Payment Successful',
