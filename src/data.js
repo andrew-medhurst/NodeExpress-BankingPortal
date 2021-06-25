@@ -9,7 +9,6 @@ const users = JSON.parse(userData);
 
 const writeJSON = () => {
   const accountsJSON = JSON.stringify(accounts);
-  console.log("FUCKIN DIR NAME: " + __dirname);
   fs.writeFileSync(path.join(__dirname,'/json/accounts.json'), accountsJSON, 'utf8');
 };
 
